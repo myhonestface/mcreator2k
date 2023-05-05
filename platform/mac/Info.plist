@@ -8,7 +8,7 @@
         <string>en</string>
 
         <key>CFBundleName</key>
-        <string>MCreator</string>
+        <string>2K Creator</string>
         <key>CFBundleIdentifier</key>
         <string>net.mcreator</string>
 
@@ -40,7 +40,7 @@
                 <key>CFBundleTypeIconFile</key>
                 <string>mcreator.icns</string>
                 <key>CFBundleTypeName</key>
-                <string>MCreator workspace file</string>
+                <string>2K Creator workspace files</string>
                 <key>CFBundleTypeRole</key>
                 <string>Editor</string>
                 <key>LSHandlerRank</key>

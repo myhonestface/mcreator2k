@@ -195,9 +195,9 @@ public final class MCreatorApplication {
 			discordClient = new DiscordClient();
 
 			// Do not externalize this text
-			discordClient.updatePresence("Just opened", "Version " + Launcher.version.getMajorString());
+			discordClient.updatePresence("Abierto ahora", "Version " + Launcher.version.getMajorString());
 
-			splashScreen.setProgress(100, "Loading MCreator windows");
+			splashScreen.setProgress(100, "Cargando una ventana de 2K Creator");
 
 			try {
 				if (Desktop.getDesktop().isSupported(Desktop.Action.APP_ABOUT))

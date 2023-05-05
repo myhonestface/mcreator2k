@@ -1,7 +1,7 @@
 import org.apache.tools.ant.taskdefs.condition.Os
 
 createExe {
-    outfile = 'mcreator.exe'
+    outfile = '2k-creator.exe'
     mainClassName = 'net.mcreator.Launcher'
     dontWrapJar = true
     copyConfigurable = []
@@ -19,12 +19,12 @@ createExe {
     bundledJre64Bit = true
     jreRuntimeBits = 64
 
-    errTitle = 'MCreator'
-    supportUrl = 'https://mcreator.net/support'
+    errTitle = '2K Creator'
+    supportUrl = 'https://discord.gg/AU23jqae2B'
 
-    fileDescription = "MCreator " + (String) project.mcreatorconf.getProperty('mcreator')
-    productName = "MCreator"
-    companyName = "Pylo"
+    fileDescription = "2K Creator " + (String) project.mcreatorconf.getProperty('mcreator')
+    productName = "2K Creator"
+    companyName = "2K Studio"
 
     icon = "${projectDir}/src/main/resources/net/mcreator/ui/res/icon.ico"
 }
@@ -38,8 +38,8 @@ tasks.register('exportWin64', Copy.class) {
     into 'build/export/win64'
     into('') {
         from file('LICENSE.txt')
-        from file('platform/windows/mcreator.bat')
-        from file('build/launch4j/mcreator.exe')
+        from file('platform/windows/2k-creator.bat')
+        from file('build/launch4j/2k-creator.exe')
     }
     into('lib') {
         from 'build/libs'
@@ -55,9 +55,9 @@ tasks.register('exportWindowsZip', Zip.class) {
     dependsOn exportWin64
 
     from 'build/export/win64/'
-    into 'MCreator' + (String) project.mcreatorconf.getProperty('mcreator').replace(".", "").replace(" ", "")
+    into '2K Creator' + (String) project.mcreatorconf.getProperty('mcreator').replace(".", "").replace(" ", "")
     destinationDirectory = file('build/export/')
-    archiveFileName = 'MCreator ' + (String) project.mcreatorconf.getProperty('mcreator') + ' Windows 64bit.zip'
+    archiveFileName = '2K Creator ' + (String) project.mcreatorconf.getProperty('mcreator') + ' Windows 64bit.zip'
 }
 
 tasks.register('buildInstallerWin64', Exec.class) {
