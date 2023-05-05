@@ -1,5 +1,5 @@
 if (project.snapshot) {
-    project.conf.setProperty('', "EAP " + (String) project.conf.getProperty('') + (String) project.builddate)
+    project.mcreatorconf.setProperty('mcreator', "EAP " + (String) project.mcreatorconf.getProperty('mcreator') + (String) project.builddate)
 }
 
 tasks.register('cleanupPlugins') {
@@ -14,7 +14,7 @@ file('plugins').traverse([maxDepth: 0, type: groovy.io.FileType.DIRECTORIES]) {
         task.archiveFileName = it.getName() + '.zip'
         task.destinationDirectory = file('build/plugins/')
         task.from 'plugins/' + it.getName()
-        task.group "plugins"
+        task.group "mcreatorplugins"
         task.mustRunAfter cleanupPlugins
     }
 }
@@ -30,11 +30,11 @@ jar {
         mkdir 'build/export/'
     }
 
-    archiveFileName = '.jar'
+    archiveFileName = 'mcreator.jar'
     manifest {
         attributes(
-                'Main-Class': 'net..Launcher',
-                '-Version': org.gradle.api.Project(''),
+                'Main-Class': 'net.mcreator.Launcher',
+                'MCreator-Version': project.mcreatorconf.getProperty('mcreator'),
                 'Build-Date': project.builddate,
                 'Build-Is-Snapshot': project.snapshot
         )
@@ -59,8 +59,8 @@ tasks.register('generateExportReport') {
             }
         }
 
-        report += '=' + version.toString() + '.' + project.builddate.toString() + '\n'
-        report += 'version=' + (String) project.conf.getProperty('').toString() + '\n'
+        report += 'mcreator=' + version.toString() + '.' + project.builddate.toString() + '\n'
+        report += 'version=' + (String) project.mcreatorconf.getProperty('mcreator').toString() + '\n'
         report += 'builddate=' + project.builddate.toString() + '\n'
         report += 'minecraft=Minecraft Forge ' + String.join("/", fg) + ', Data Packs ' + String.join("/", dp) + ', and Bedrock Edition ' + String.join("/", bd) + '\n'
 
